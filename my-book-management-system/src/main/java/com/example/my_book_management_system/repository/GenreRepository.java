@@ -11,9 +11,9 @@ import java.util.Optional;
 @Repository
 public interface GenreRepository extends JpaRepository<GenreEntity, Long> {
     //Get details of a specific genre
-    Optional<GenreEntity> findByGenreName(String name);
+    Optional<GenreEntity> findByName(String name);
 
-    Optional<GenreEntity> findByGenreNameIgnoreCase(String name);
+    Optional<GenreEntity> findByNameIgnoreCase(String name);
 
     // Retrieve a list of all genres.
     Page<GenreEntity> findAll(Pageable name);

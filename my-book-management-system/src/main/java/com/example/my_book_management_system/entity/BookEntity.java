@@ -27,13 +27,13 @@ public class BookEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "author_id", referencedColumnName ="id", nullable = false)
     @JsonProperty("author_id")
-    private Long authorId;
+    private AuthorEntity authorId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "genre_id", referencedColumnName ="id", nullable = false)
     @JsonProperty("genre_id")
-    private Long genreId;
+    private GenreEntity genreId;
 
     @Column(name = "published_date")
-    private Date publishedDate;
+    private String publishedDate;
 }
