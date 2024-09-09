@@ -5,6 +5,8 @@ import com.example.my_book_management_system.repository.AuthorRepository;
 import com.example.my_book_management_system.service.AuthorService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,8 +18,8 @@ public class AuthorServiceImpl implements AuthorService {
     @Autowired
     private AuthorRepository authorRepository;
 
-    public List<AuthorEntity> getAllAuthor(){
-        return authorRepository.findAll();
+    public Page<AuthorEntity> getAllAuthor(Pageable pageable){
+        return authorRepository.findAll(pageable);
     }
 
     public AuthorEntity getAuthorById(Long id){

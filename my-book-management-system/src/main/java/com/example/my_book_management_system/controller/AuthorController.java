@@ -3,6 +3,8 @@ package com.example.my_book_management_system.controller;
 import com.example.my_book_management_system.entity.AuthorEntity;
 import com.example.my_book_management_system.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,8 +23,9 @@ public class AuthorController {
     }
 
     @GetMapping()
-    public List<AuthorEntity> getAllAuthors() {
-        return authorService.getAllAuthor();
+    public ResponseEntity<Page<AuthorEntity>> getAllAuthors(Pageable pageable) {
+        Page<AuthorEntity> author = authorService.getAllAuthor(pageable);
+        return ResponseEntity.ok(author);
     }
 
     @GetMapping("/{id}")

@@ -5,6 +5,8 @@ import com.example.my_book_management_system.repository.GenreRepository;
 import com.example.my_book_management_system.service.GenreService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,8 +22,8 @@ public class GenreServiceImpl implements GenreService {
         return genreRepository.save(genre);
     }
 
-    public List<GenreEntity> getAllGenre(){
-        return genreRepository.findAll();
+    public Page<GenreEntity> getAllGenre(Pageable pageable){
+        return genreRepository.findAll(pageable);
     }
 
     public GenreEntity getGenreById(Long id){

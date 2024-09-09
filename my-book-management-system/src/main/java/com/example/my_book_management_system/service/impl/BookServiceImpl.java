@@ -5,9 +5,12 @@ import com.example.my_book_management_system.repository.BookRepository;
 import com.example.my_book_management_system.service.BookService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -20,8 +23,8 @@ public class BookServiceImpl implements BookService {
         return bookRepository.save(book);
     }
 
-    public List<BookEntity> getAllBook(){
-        return bookRepository.findAll();
+    public Page<BookEntity> getAllBook(Pageable pageable){
+        return bookRepository.findAll(pageable);
     }
 
     public BookEntity getBookById(Long id){
@@ -33,6 +36,6 @@ public class BookServiceImpl implements BookService {
     }
 
     public BookEntity getBookByTitle(String title){
-        return bookRepository.findByTitleIgnoreCase(title).orElse(null);
+        return bookRepository.findByTitle(title).orElseGet(null);
     }
 }

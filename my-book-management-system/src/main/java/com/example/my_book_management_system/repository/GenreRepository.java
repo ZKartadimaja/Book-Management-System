@@ -16,6 +16,6 @@ public interface GenreRepository extends JpaRepository<GenreEntity, Long> {
     Optional<GenreEntity> findByNameIgnoreCase(String name);
 
     // Retrieve a list of all genres.
-    Page<GenreEntity> findAll(Pageable name);
+    Page<GenreEntity> findAll(Pageable pageable);
 
 }

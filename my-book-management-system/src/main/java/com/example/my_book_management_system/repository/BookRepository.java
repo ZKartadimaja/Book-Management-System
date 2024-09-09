@@ -11,8 +11,8 @@ import java.util.Optional;
 @Repository
 public interface BookRepository extends JpaRepository<BookEntity, Long> {
     // Get Book By Title
-//    Optional<BookEntity> findByTitle(String title);
-    Optional<BookEntity> findByTitleIgnoreCase(String title);
+    Optional<BookEntity> findByTitle(String title);
+//    Optional<BookEntity> findByTitleIgnoreCase(String title);
 
     // Get Book By Author
 //    Optional<BookEntity> findByAuthorIgnoreCase(String author);
@@ -21,7 +21,7 @@ public interface BookRepository extends JpaRepository<BookEntity, Long> {
 //    Optional<BookEntity> findByBookGenreIdIgnoreCase(String genre);
 
     // Retrieve a list of all genres.
-    Page<BookEntity> findAll(Pageable name);
+    Page<BookEntity> findAll(Pageable pageable);
 
 
 }

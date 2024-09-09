@@ -1,13 +1,15 @@
 package com.example.my_book_management_system.service;
 
 import com.example.my_book_management_system.entity.AuthorEntity;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
 public interface AuthorService {
-    List<AuthorEntity> getAllAuthor();
+    Page<AuthorEntity> getAllAuthor(Pageable pageable);
 
     AuthorEntity getAuthorById(Long id);
 

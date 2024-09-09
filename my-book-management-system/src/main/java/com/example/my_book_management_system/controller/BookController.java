@@ -3,10 +3,13 @@ package com.example.my_book_management_system.controller;
 import com.example.my_book_management_system.entity.BookEntity;
 import com.example.my_book_management_system.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/books")
@@ -21,8 +24,9 @@ public class BookController {
     }
 
     @GetMapping()
-    public List<BookEntity> getAllBooks() {
-        return bookService.getAllBook();
+    public ResponseEntity<Page<BookEntity>> getAllBooks(Pageable pageable) {
+        Page<BookEntity> book = bookService.getAllBook(pageable);
+        return ResponseEntity.ok(book);
     }
 
     @GetMapping("/{id}")
@@ -37,9 +41,9 @@ public class BookController {
 
     @GetMapping("/api/books/search")
     public ResponseEntity<BookEntity> getBookByAuthor(
-            @RequestParam (name = "title") String title,
-            @RequestParam (name = "author_name") String authorName,
-            @RequestParam (name = "genre", required = false, defaultValue = "20") String genre
+            @RequestParam (name = "title", required = false, defaultValue = "") String title,
+            @RequestParam (name = "author_name", required = false, defaultValue = "") String authorName,
+            @RequestParam (name = "genre", required = false, defaultValue = "") String genre
     ) {
         BookEntity book = bookService.getBookByTitle(title);
         if (book != null) {

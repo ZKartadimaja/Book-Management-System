@@ -16,5 +16,5 @@ public interface AuthorRepository extends JpaRepository<AuthorEntity, Long> {
     Optional<AuthorEntity> findByNameIgnoreCase(String name);
 
     // Retrieve a list of all genres.
-    Page<AuthorEntity> findAll(Pageable name);
+    Page<AuthorEntity> findAll(Pageable pageable);
 }

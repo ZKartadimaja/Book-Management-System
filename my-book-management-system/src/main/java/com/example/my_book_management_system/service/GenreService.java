@@ -1,6 +1,8 @@
 package com.example.my_book_management_system.service;
 
 import com.example.my_book_management_system.entity.GenreEntity;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -9,7 +11,7 @@ import java.util.List;
 public interface GenreService {
     GenreEntity saveGenre(GenreEntity genre);
 
-    List<GenreEntity> getAllGenre();
+    Page<GenreEntity> getAllGenre(Pageable pageable);
 
     GenreEntity getGenreById(Long id);
 
