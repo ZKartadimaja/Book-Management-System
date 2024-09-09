@@ -37,6 +37,16 @@ public class BookController {
         }
     }
 
+    @GetMapping("/api/books/search")
+    public ResponseEntity<BookEntity> getBookByAuthor(@PathVariable String id) {
+        BookEntity book = bookService.getBookById(id);
+        if (book != null) {
+            return ResponseEntity.ok(book);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<BookEntity> updateBook(@PathVariable Long id, @RequestBody BookEntity bookDetails) {
         BookEntity book = bookService.getBookById(id);
