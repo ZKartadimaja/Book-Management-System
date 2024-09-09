@@ -16,11 +16,11 @@ public class AuthorEntity {
     private Long id;
 
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false)
     @JsonProperty("name")
     private String name;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false)
     @JsonProperty("bio")
     private String bio;
 }

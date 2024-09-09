@@ -16,27 +16,24 @@ public class BookEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false)
     @JsonProperty("title")
     private String title;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false)
     @JsonProperty("isbn")
     private String isbn;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(nullable = false, length = 100)
-    @JsonProperty("author")
-    private String author;
+    @Column(name = "author_id", nullable = false)
+    @JsonProperty("author_id")
+    private String authorId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(nullable = false, length = 100)
-    @JsonProperty("genre")
-    private String genre;
+    @Column(name = "genre_id", nullable = false)
+    @JsonProperty("genre_id")
+    private String genreId;
 
-    @Column(name = "published_date", nullable = false)
+    @Column(name = "published_date")
     private Date publishedDate;
-
-
-
 }
