@@ -1,24 +1,34 @@
 package com.example.my_book_management_system.service.impl;
 
 import com.example.my_book_management_system.entity.AuthorEntity;
+import com.example.my_book_management_system.repository.AuthorRepository;
 import com.example.my_book_management_system.service.AuthorService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
+@Slf4j
 public class AuthorServiceImpl implements AuthorService {
-    List<AuthorEntity> getAllAuthor(){
 
+    @Autowired
+    private AuthorRepository authorRepository;
+
+    public List<AuthorEntity> getAllAuthor(){
+        return authorRepository.findAll();
     }
 
-    AuthorEntity getAuthorById(Long id){
-
+    public AuthorEntity getAuthorById(Long id){
+        return authorRepository.findById(id).orElse(null);
     }
 
-    AuthorEntity deleteAuthor(AuthorEntity author){
-
+    public void deleteAuthor(Long id){
+        authorRepository.deleteById(id);
     }
 
-    AuthorEntity saveAuthor(AuthorEntity author){
-
+    public AuthorEntity saveAuthor(AuthorEntity author){
+        return authorRepository.save(author);
     }
 }

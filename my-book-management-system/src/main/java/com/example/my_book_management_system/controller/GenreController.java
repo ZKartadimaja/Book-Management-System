@@ -52,8 +52,8 @@ public class GenreController {
     public ResponseEntity<GenreEntity> deleteGenre(@PathVariable Long id){
         GenreEntity genre = genreService.getGenreById(id);
         if (genre != null) {
-            GenreEntity deletedGenre = genreService.deleteGenre(genre);
-            return ResponseEntity.ok(deletedGenre);
+            genreService.deleteGenre(id);
+            return ResponseEntity.ok(genre);
         } else {
             return ResponseEntity.notFound().build();
         }

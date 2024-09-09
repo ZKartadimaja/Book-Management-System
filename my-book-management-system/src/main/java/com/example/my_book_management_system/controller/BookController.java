@@ -38,7 +38,7 @@ public class BookController {
     }
 
     @GetMapping("/api/books/search")
-    public ResponseEntity<BookEntity> getBookByAuthor(@PathVariable String id) {
+    public ResponseEntity<BookEntity> getBookByAuthor(@PathVariable Long id) {
         BookEntity book = bookService.getBookById(id);
         if (book != null) {
             return ResponseEntity.ok(book);
@@ -66,8 +66,8 @@ public class BookController {
     public ResponseEntity<BookEntity> deleteBook(@PathVariable Long id){
         BookEntity book = bookService.getBookById(id);
         if (book != null) {
-            BookEntity deletedBook = bookService.deleteBook(book);
-            return ResponseEntity.ok(deletedBook);
+            bookService.deleteBook(id);
+            return ResponseEntity.ok(book);
         } else {
             return ResponseEntity.notFound().build();
         }

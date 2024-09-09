@@ -13,5 +13,5 @@ public interface GenreService {
 
     GenreEntity getGenreById(Long id);
 
-    GenreEntity deleteGenre(GenreEntity genre);
+    void deleteGenre(Long id);
 }
