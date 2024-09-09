@@ -39,7 +39,7 @@ public class BookController {
         }
     }
 
-    @GetMapping("/api/books/search")
+    @GetMapping("/search")
     public ResponseEntity<BookEntity> getBookByAuthor(
             @RequestParam (name = "title", required = false, defaultValue = "") String title,
             @RequestParam (name = "author_name", required = false, defaultValue = "") String authorName,
