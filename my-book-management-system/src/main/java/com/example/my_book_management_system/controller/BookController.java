@@ -1,9 +1,7 @@
 package com.example.my_book_management_system.controller;
 
 import com.example.my_book_management_system.entity.BookEntity;
-import com.example.my_book_management_system.entity.GenreEntity;
 import com.example.my_book_management_system.service.BookService;
-import com.example.my_book_management_system.service.GenreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -38,8 +36,12 @@ public class BookController {
     }
 
     @GetMapping("/api/books/search")
-    public ResponseEntity<BookEntity> getBookByAuthor(@PathVariable Long id) {
-        BookEntity book = bookService.getBookById(id);
+    public ResponseEntity<BookEntity> getBookByAuthor(
+            @RequestParam (name = "title") String title,
+            @RequestParam (name = "author_name") String authorName,
+            @RequestParam (name = "genre", required = false, defaultValue = "20") String genre
+    ) {
+        BookEntity book = bookService.getBookByTitle(title);
         if (book != null) {
             return ResponseEntity.ok(book);
         } else {

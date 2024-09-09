@@ -1,12 +1,10 @@
 package com.example.my_book_management_system.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.Date;
 
 @Entity
 @Table(name = "book")
@@ -25,13 +23,13 @@ public class BookEntity {
     @JsonProperty("isbn")
     private String isbn;
 
-    @JsonIgnore
+    @JsonIgnoreProperties({"hibernateLazyInitializer"})
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "author_id", referencedColumnName ="id", nullable = false)
     @JsonProperty("author_id")
     private AuthorEntity authorId;
 
-    @JsonIgnore
+    @JsonIgnoreProperties({"hibernateLazyInitializer"})
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "genre_id", referencedColumnName ="id", nullable = false)
     @JsonProperty("genre_id")
