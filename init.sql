@@ -17,8 +17,8 @@ CREATE TABLE public.book (
 
 -- public.book foreign keys
 
-ALTER TABLE public.book ADD CONSTRAINT author_id FOREIGN KEY (id) REFERENCES public.author(id);
-ALTER TABLE public.book ADD CONSTRAINT genre_id FOREIGN KEY (id) REFERENCES public.genre(id);
+ALTER TABLE public.book ADD CONSTRAINT author_id FOREIGN KEY (author_id) REFERENCES public.author(id);
+ALTER TABLE public.book ADD CONSTRAINT genre_id FOREIGN KEY (genre_id) REFERENCES public.genre(id);
 
 -- public.author definition
 
