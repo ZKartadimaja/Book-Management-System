@@ -8,7 +8,7 @@ import lombok.Setter;
 import java.util.Date;
 
 @Entity
-@Table(name = "books")
+@Table(name = "book")
 @Setter
 @Getter
 public class BookEntity {
@@ -25,14 +25,14 @@ public class BookEntity {
     private String isbn;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "author_id", nullable = false)
+    @JoinColumn(name = "author_id", referencedColumnName ="id", nullable = false)
     @JsonProperty("author_id")
-    private String authorId;
+    private Long authorId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "genre_id", nullable = false)
+    @JoinColumn(name = "genre_id", referencedColumnName ="id", nullable = false)
     @JsonProperty("genre_id")
-    private String genreId;
+    private Long genreId;
 
     @Column(name = "published_date")
     private Date publishedDate;
