@@ -1,7 +1,6 @@
 package com.example.my_book_management_system.controller;
 
 import com.example.my_book_management_system.entity.AuthorEntity;
-import com.example.my_book_management_system.entity.GenreEntity;
 import com.example.my_book_management_system.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -50,10 +49,10 @@ public class AuthorController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<GenreEntity> deleteAuthor(@PathVariable Long id){
+    public ResponseEntity<AuthorEntity> deleteAuthor(@PathVariable Long id){
         AuthorEntity author = authorService.getAuthorById(id);
         if (author != null) {
-            GenreEntity deletedAuthor = authorService.deleteAuthor(author);
+            AuthorEntity deletedAuthor = authorService.deleteAuthor(author);
             return ResponseEntity.ok(deletedAuthor);
         } else {
             return ResponseEntity.notFound().build();

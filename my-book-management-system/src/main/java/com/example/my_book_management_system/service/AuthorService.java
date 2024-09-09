@@ -10,7 +10,7 @@ public interface AuthorService {
 
     AuthorEntity getAuthorById(Long id);
 
-    GenreEntity deleteAuthor(AuthorEntity author);
+    AuthorEntity deleteAuthor(AuthorEntity author);
 
     AuthorEntity saveAuthor(AuthorEntity author);
 }
