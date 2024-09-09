@@ -1,6 +1,5 @@
 package com.example.my_book_management_system.controller;
 
-import com.example.my_book_management_system.entity.BookEntity;
 import com.example.my_book_management_system.entity.GenreEntity;
 import com.example.my_book_management_system.service.GenreService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +7,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/genres")

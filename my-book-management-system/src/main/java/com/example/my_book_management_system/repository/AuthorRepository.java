@@ -7,14 +7,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
-
 @Repository
 public interface AuthorRepository extends JpaRepository<AuthorEntity, Long> {
-    Optional<AuthorEntity> findByName(String name);
-
-    Optional<AuthorEntity> findByNameIgnoreCase(String name);
-
     // Retrieve a list of all genres.
     Page<AuthorEntity> findAll(Pageable pageable);
 }
