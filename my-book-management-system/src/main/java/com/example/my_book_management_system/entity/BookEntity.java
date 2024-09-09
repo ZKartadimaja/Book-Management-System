@@ -35,6 +35,6 @@ public class BookEntity {
     @JsonProperty("genre_id")
     private GenreEntity genreId;
 
-    @Column(name = "published_date")
+    @Column(name = "published_date", nullable = false)
     private String publishedDate;
 }
