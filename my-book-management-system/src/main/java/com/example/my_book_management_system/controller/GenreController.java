@@ -21,7 +21,7 @@ public class GenreController {
     }
 
     @GetMapping()
-    public List<GenreEntity> getAllEmployees() {
+    public List<GenreEntity> getAllGenres() {
         return genreService.getAllGenre();
     }
 
@@ -36,16 +36,27 @@ public class GenreController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<GenreEntity> updateEmployee(@PathVariable Long id, @RequestBody GenreEntity genreDetails) {
+    public ResponseEntity<GenreEntity> updateGenre(@PathVariable Long id, @RequestBody GenreEntity genreDetails) {
         GenreEntity genre = genreService.getGenreById(id);
         if (genre != null) {
-            genre.setFirstName(genreDetails.getFirstName());
-            genre.setLastName(genreDetails.getLastName());
-            genre.setHireDate(genreDetails.getHireDate());
+            genre.setId(genreDetails.getId());
+            genre.setName(genreDetails.getName());
             GenreEntity updatedGenre = genreService.saveGenre(genre);
             return ResponseEntity.ok(updatedGenre);
         } else {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<GenreEntity> deleteGenre(@PathVariable Long id){
+        GenreEntity genre = genreService.getGenreById(id);
+        if (genre != null) {
+            GenreEntity deletedGenre = genreService.deleteGenre(genre);
+            return ResponseEntity.ok(deletedGenre);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 }
