@@ -58,7 +58,7 @@ public class BookController {
     public ResponseEntity<BookEntity> updateBook(@PathVariable Long id, @RequestBody BookRequest bookDetails) {
         BookEntity book = bookService.getBookById(id);
         if (book != null) {
-            BookEntity updatedBook = bookService.saveBook(bookDetails);
+            BookEntity updatedBook = bookService.updateBook(book, bookDetails);
             return ResponseEntity.ok(updatedBook);
         } else {
             return ResponseEntity.notFound().build();

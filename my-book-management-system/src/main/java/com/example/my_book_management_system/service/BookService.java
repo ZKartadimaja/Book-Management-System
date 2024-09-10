@@ -17,4 +17,6 @@ public interface BookService {
     void deleteBook(Long id);
 
     BookEntity getBookByTitleOrAuthorOrGenre(String title, String author, String genre);
+
+    BookEntity updateBook(BookEntity book, BookRequest bookDetails);
 }

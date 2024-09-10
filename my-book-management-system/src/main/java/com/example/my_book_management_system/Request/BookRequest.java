@@ -1,15 +1,9 @@
 package com.example.my_book_management_system.Request;
 
-import com.example.my_book_management_system.entity.AuthorEntity;
-import com.example.my_book_management_system.entity.GenreEntity;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
+@Data
 @Setter
 @Getter
 @NoArgsConstructor

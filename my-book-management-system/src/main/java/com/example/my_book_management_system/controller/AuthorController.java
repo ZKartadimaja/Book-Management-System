@@ -40,8 +40,7 @@ public class AuthorController {
     public ResponseEntity<AuthorEntity> updateAuthor(@PathVariable Long id, @RequestBody AuthorEntity authorDetails) {
         AuthorEntity author = authorService.getAuthorById(id);
         if (author != null) {
-            author.setName(authorDetails.getName());
-            author.setBio(authorDetails.getBio());
+
             AuthorEntity updatedAuthor = authorService.saveAuthor(author);
             return ResponseEntity.ok(updatedAuthor);
         } else {
