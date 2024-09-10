@@ -32,8 +32,6 @@ public class BookServiceImpl implements BookService {
 
         AuthorEntity author = authorRepository.findById(book.getAuthorId()).orElse(null);
         GenreEntity genre = genreRepository.findById(book.getGenreId()).orElse(null);
-        System.out.println(author);
-        System.out.println(genre);
         BookEntity bookEntity = new BookEntity();
         bookEntity.setTitle(book.getTitle());
         bookEntity.setIsbn(book.getIsbn());
@@ -62,8 +60,6 @@ public class BookServiceImpl implements BookService {
     public BookEntity updateBook(BookEntity book, BookRequest bookDetails){
         AuthorEntity author = authorRepository.findById(bookDetails.getAuthorId()).orElse(null);
         GenreEntity genre = genreRepository.findById(bookDetails.getGenreId()).orElse(null);
-        System.out.println(author);
-        System.out.println(genre);
         book.setTitle(bookDetails.getTitle());
         book.setIsbn(bookDetails.getIsbn());
         book.setAuthorId(author);
