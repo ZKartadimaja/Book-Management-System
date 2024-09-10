@@ -31,4 +31,9 @@ public class GenreServiceImpl implements GenreService {
     public void deleteGenre(Long id){
         genreRepository.deleteById(id);
     }
+
+    public GenreEntity updateGenre(GenreEntity genre, GenreEntity genreDetails){
+        genre.setName(genreDetails.getName());
+        return genreRepository.save(genre);
+    }
 }
