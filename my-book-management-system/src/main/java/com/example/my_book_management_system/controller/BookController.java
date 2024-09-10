@@ -1,5 +1,6 @@
 package com.example.my_book_management_system.controller;
 
+import com.example.my_book_management_system.Request.BookRequest;
 import com.example.my_book_management_system.entity.BookEntity;
 import com.example.my_book_management_system.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class BookController {
     private BookService bookService;
 
     @PostMapping
-    public BookEntity createBook(@RequestBody BookEntity book) {
+    public BookEntity createBook(@RequestBody BookRequest book) {
         return bookService.saveBook(book);
     }
 
@@ -42,10 +43,10 @@ public class BookController {
     @GetMapping("/search")
     public ResponseEntity<BookEntity> getBookByAuthor(
             @RequestParam (name = "title", required = false, defaultValue = "") String title,
-            @RequestParam (name = "author_name", required = false, defaultValue = "") String authorName,
+            @RequestParam (name = "author", required = false, defaultValue = "") String author,
             @RequestParam (name = "genre", required = false, defaultValue = "") String genre
-    ) {
-        BookEntity book = bookService.getBookByTitle(title);
+    ) { BookEntity book = bookService.getBookByTitleOrAuthorOrGenre(title, author, genre);
+
         if (book != null) {
             return ResponseEntity.ok(book);
         } else {
@@ -54,14 +55,10 @@ public class BookController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<BookEntity> updateBook(@PathVariable Long id, @RequestBody BookEntity bookDetails) {
+    public ResponseEntity<BookEntity> updateBook(@PathVariable Long id, @RequestBody BookRequest bookDetails) {
         BookEntity book = bookService.getBookById(id);
         if (book != null) {
-            book.setTitle(bookDetails.getTitle());
-            book.setIsbn(bookDetails.getIsbn());
-            book.setAuthorId(bookDetails.getAuthorId());
-            book.setGenreId(bookDetails.getGenreId());
-            BookEntity updatedBook = bookService.saveBook(book);
+            BookEntity updatedBook = bookService.saveBook(bookDetails);
             return ResponseEntity.ok(updatedBook);
         } else {
             return ResponseEntity.notFound().build();

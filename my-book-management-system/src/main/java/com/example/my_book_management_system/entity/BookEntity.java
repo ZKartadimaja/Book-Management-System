@@ -26,13 +26,13 @@ public class BookEntity {
     @JsonIgnoreProperties({"hibernateLazyInitializer"})
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "author_id", referencedColumnName ="id", nullable = false)
-    @JsonProperty("author_id")
+    @JsonProperty("author")
     private AuthorEntity authorId;
 
     @JsonIgnoreProperties({"hibernateLazyInitializer"})
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "genre_id", referencedColumnName ="id", nullable = false)
-    @JsonProperty("genre_id")
+    @JsonProperty("genre")
     private GenreEntity genreId;
 
     @Column(name = "published_date", nullable = false)
