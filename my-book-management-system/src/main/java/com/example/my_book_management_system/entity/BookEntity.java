@@ -11,6 +11,7 @@ import lombok.Setter;
 @Setter
 @Getter
 public class BookEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

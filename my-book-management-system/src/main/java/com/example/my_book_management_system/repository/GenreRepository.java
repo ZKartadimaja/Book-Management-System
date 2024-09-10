@@ -10,5 +10,4 @@ import org.springframework.stereotype.Repository;
 public interface GenreRepository extends JpaRepository<GenreEntity, Long> {
     // Retrieve a list of all genres.
     Page<GenreEntity> findAll(Pageable pageable);
-
 }

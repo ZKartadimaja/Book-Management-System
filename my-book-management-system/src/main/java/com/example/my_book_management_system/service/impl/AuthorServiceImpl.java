@@ -31,6 +31,7 @@ public class AuthorServiceImpl implements AuthorService {
     public AuthorEntity saveAuthor(AuthorEntity author){
         return authorRepository.save(author);
     }
+
     public AuthorEntity updateAuthor(AuthorEntity author, AuthorEntity authorDetails){
         author.setName(authorDetails.getName());
         author.setBio(authorDetails.getBio());

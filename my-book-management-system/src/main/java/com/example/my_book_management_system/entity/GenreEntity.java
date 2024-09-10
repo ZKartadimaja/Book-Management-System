@@ -18,5 +18,4 @@ public class GenreEntity {
     @Column(nullable = false)
     @JsonProperty("name")
     private String name;
-
 }

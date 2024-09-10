@@ -28,8 +28,6 @@ public class BookServiceImpl implements BookService {
     private GenreRepository genreRepository;
 
     public BookEntity saveBook(BookRequest book){
-
-
         AuthorEntity author = authorRepository.findById(book.getAuthorId()).orElse(null);
         GenreEntity genre = genreRepository.findById(book.getGenreId()).orElse(null);
         System.out.println(author);
